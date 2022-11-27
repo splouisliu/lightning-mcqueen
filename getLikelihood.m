@@ -11,4 +11,7 @@ function [likelihood, minNorm] = getLikelihood(map, angles, particles, measureme
     D = size(measurement, 2);
     measurementNoise = eye(D);
     likelihood = 1/sqrt((2*pi).^D * det(measurementNoise)) * exp(-0.5 * errorNorm);
+    
+    % Normalize
+    likelihood = likelihood / sum(likelihood);
 end

@@ -4,6 +4,7 @@ function visualize(map, particles, pose, estimatedPose, measurement, angles, min
     drawnow;
     clf;
     show(map);
+    set(gcf,'Visible','on')
     xlim([-10, 108]);
     ylim([-10, 63]);
     xlabel("X [inches]")
