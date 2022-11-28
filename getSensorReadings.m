@@ -28,8 +28,8 @@ function [u, u_pf, ir] = getSensorReadings(map, scanAngles)
         for i = 1:7
             t(i) = str2num(char(readings(i)));      % in CM, from outer sensors
         end
-
-        u = [t(1), t(3), t(7), t(6), t(5), t(2)]/2.54 + 4.2465;
+        
+        u = [t(1), t(3), t(7), t(6), t(5), t(2)]/2.54 + 3.875;     % 4.2465 previous
         u_pf = [u(1), u(3), u(4), u(5)];
         ir = str2num(char(readings(8)));
     end
