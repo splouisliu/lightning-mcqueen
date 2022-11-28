@@ -4,7 +4,7 @@ function gripper(pickupLocation)
     s = s_bt;
 
     if pickupLocation == 3
-        entry = "north";
+        entry = "east";
     elseif pickupLocation == 17
         entry = "south";
     end
@@ -17,9 +17,9 @@ function gripper(pickupLocation)
     
     fwrite(s, 'h');
     
-    if (blockfound==0);
+    if (blockfound==0) && (forward_counter < 3);
         
-    while ((blockfound==0) && (forward_counter < 2));
+    while ((blockfound==0) && (forward_counter < 3));
     
         fwrite(s, 's');
         readings = fscanf(s);
@@ -64,11 +64,26 @@ function gripper(pickupLocation)
                 end
             end
         else
-            if (u(4) > 12 ) && (u(3) > 7) && (u(2) > 7)
+            if (u(4) > 12 ) && (u(3) > 5) && (u(2) > 5)
                 fwrite(s, 'f');
                 readings = fscanf(s);
 
                 forward_counter = forward_counter + 1;
+
+            else if (u(3) < u(2))
+                fwrite(s, 'r');
+                readings = fscanf(s);
+
+            else if (u(3) >= u(2))
+                fwrite(s, 'l');
+                readings = fscanf(s);
+
+            else
+                fwrite(s, 'f');
+                readings = fscanf(s);
+                forward_counter = forward_counter + 1;
+
+
             end
         end   
     end 
@@ -77,6 +92,12 @@ function gripper(pickupLocation)
     
     
     end 
+
+    disp(forward_counter)
+
+    end
+
+    end
     
     if (entry == "east");
     if ((blockfound==0) && (counter < 15));
@@ -154,6 +175,7 @@ function gripper(pickupLocation)
             counter = 0;
     
     end
+    
     
     elseif (entry == "south");
     
@@ -236,5 +258,3 @@ function gripper(pickupLocation)
     end
     
 end
-    
-
