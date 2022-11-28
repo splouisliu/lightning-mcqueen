@@ -1,4 +1,4 @@
-function visualize(map, particles, pose, estimatedPose, measurement, angles, minNorm, du, pathInd)
+function visualize(map, particles, pose, estimatedPose, u, u_pf, angles, minNorm, du, pathInd)
     global mode TESTING;
     
     drawnow;
@@ -34,7 +34,7 @@ function visualize(map, particles, pose, estimatedPose, measurement, angles, min
         line([pose(1), pose(1)+2*cos(pose(3))], [pose(2), pose(2)+2*sin(pose(3))], "Color", "green", "LineWidth", 1);
     
         for j = 1:size(angles,2)
-            line([pose(1), pose(1)+measurement(j)*cos(angles(j))], [pose(2), pose(2)+measurement(j)*sin(angles(j))],'Color','green')
+            line([pose(1), pose(1)+u_pf(j)*cos(angles(j))], [pose(2), pose(2)+u_pf(j)*sin(angles(j))],'Color','green')
         end
     end
     
@@ -51,7 +51,7 @@ function visualize(map, particles, pose, estimatedPose, measurement, angles, min
     
     xL=xlim;
     yL=ylim;
-    text(xL(1)+3, yL(2)-2, "Measurement = (" + join(string(round(measurement, 0)), ", ") + ")", 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
+    text(xL(1)+3, yL(2)-2, "Measurement = (" + join(string(round(u, 1)), ", ") + ")", 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
     text(xL(1)+3, yL(2)-6, "du = ("  + join(string(round(du, 1)), ", ") + ")", 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
     %text(xL(2)-3, yL(2)-6, "Mean = (" + join(string(round(meanParticles, 1)), ", ") + ")", 'HorizontalAlignment', 'right', 'VerticalAlignment', 'top')
     text(xL(2)-3, yL(2)-2, "Std = (" + join(string(round(stdParticles, 1)), ", ") + ")", 'HorizontalAlignment', 'right', 'VerticalAlignment', 'top')
