@@ -47,7 +47,7 @@ function [du, newPathIndex, newMoveIndex] = followPath(path, u, pathIndex, moveI
         disp("invalid command");
     end
 
-    if moveIndex > 5                % Changed
+    if moveIndex > 5
         pathIndex = pathIndex + 1;
         moveIndex = 1;
     end
