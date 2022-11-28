@@ -1,4 +1,11 @@
 function [du, newPathIndex, newMoveIndex] = followPath(path, u, pathIndex, moveIndex, ir)
+    % Return if path is empty
+    if path == ""
+        du = [0, 0, 0];
+        newPathIndex = pathIndex;
+        newMoveIndex = moveIndex;
+        return
+    end
     
     command = path(pathIndex);
 %     path
@@ -12,13 +19,11 @@ function [du, newPathIndex, newMoveIndex] = followPath(path, u, pathIndex, moveI
         end
 
     elseif command == "rotate 90" && size(path, 2) == 2
-        %du = executeMovement("rotate hard 90");                  %CHANGED
         du = executeMovement("rotate 60");
         pathIndex = pathIndex + 1;
         moveIndex = 1;
     
     elseif command == "rotate -90" && size(path, 2) == 2
-        %du = executeMovement("rotate hard -90");                 %CHANGED
         du = executeMovement("rotate -60");
         pathIndex = pathIndex + 1;
         moveIndex = 1;

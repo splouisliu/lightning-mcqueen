@@ -155,7 +155,7 @@ function gripper(pickupLocation)
     
     end
     
-    else if (entry == "south");
+    elseif (entry == "south");
     
     if ((blockfound==0) && (counter < 15));
     
@@ -235,6 +235,6 @@ function gripper(pickupLocation)
     
     end
     
-    end
-    
 end
+    
+

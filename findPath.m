@@ -3,7 +3,7 @@ function [pathf, pathincdices] = findPath(pose, final_destination)
     indRC = floor((poseRC-2)/12 + 1);
     x = indRC(1);
     y = indRC(2);
-    localized_heading = rad2deg(pose(3));
+    localized_heading = rad2deg(wrapTo2Pi(pose(3)));
 
 
     M=8;N=4; %grid dimensions
