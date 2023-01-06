@@ -9,4 +9,8 @@ Built 3 modes: MATLAB testing simulator, TCP/IP simulator, and physical robot
 
 # Demo
 
-![Alt Text](gifs/demo.gif)
+![Alt Text](imgs/demo.gif)
+
+# Flow Diagram
+
+![Alt Text](imgs/flow.png)
