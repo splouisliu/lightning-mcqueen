@@ -18,6 +18,13 @@ function gripper(pickupLocation)
     fwrite(s, 'h');
     
     if (blockfound==0) && (forward_counter < 3);
+        if (entry == "east")
+            fwrite(s, '@');
+            readings = fscanf(s);
+        else
+            fwrite(s, '#');
+            readings = fscanf(s);
+
         
     while ((blockfound==0) && (forward_counter < 3));
     
@@ -56,6 +63,7 @@ function gripper(pickupLocation)
                     fwrite(s, 'i');
     
                     blockfound = 1
+                
                 elseif (u(4) > 8 ) && (u(3) > 3) && (u(2) > 3) 
                     fwrite(s, 'm');
                     readings = fscanf(s);
@@ -100,8 +108,7 @@ function gripper(pickupLocation)
     end
     
     if (entry == "east");
-            fwrite(s, '@');
-            readings = fscanf(s);
+
     if ((blockfound==0) && (counter < 15));
     
     while ((blockfound==0) && (counter < 15));
@@ -129,7 +136,7 @@ function gripper(pickupLocation)
         a = "ir"
         disp(ir)
        
-        if (((u(4)-u(1)) > 13) && ((u(4)-u(1)) < 35)) ||  ir> 250 %% ((u(4)-ir_cm)> 30 && (u(4)-ir_cm)<40)
+        if (((u(4)-u(1)) > 13) && ((u(4)-u(1)) < 50)) ||  ir> 250 %% ((u(4)-ir_cm)> 30 && (u(4)-ir_cm)<40)
             if (u(1)<10) || ir > 200
                 if (u(1) < 6) || ir > 400
                     fwrite(s, '9');
@@ -146,7 +153,7 @@ function gripper(pickupLocation)
                     readings = fscanf(s);
                 end
             else
-                if (u(4) > 12 ) && (u(3) > 7) && (u(2) > 7)
+                if (u(4) > 8 ) && (u(3) > 3) && (u(2) > 3)
                     fwrite(s, 'f');
                     readings = fscanf(s);
                 end
@@ -180,8 +187,7 @@ function gripper(pickupLocation)
     
     
     elseif (entry == "south");
-            fwrite(s, '#');
-            readings = fscanf(s);
+
     
     if ((blockfound==0) && (counter < 15));
     
@@ -210,7 +216,7 @@ function gripper(pickupLocation)
         a = "ir"
         disp(ir)
        
-        if (((u(4)-u(1)) > 13) && ((u(4)-u(1)) < 35)) ||  ir> 250 %% ((u(4)-ir_cm)> 30 && (u(4)-ir_cm)<40)
+        if (((u(4)-u(1)) > 13) && ((u(4)-u(1)) < 50)) ||  ir> 250 %% ((u(4)-ir_cm)> 30 && (u(4)-ir_cm)<40)
             if (u(1)<10) || ir > 200
                 if (u(1) < 6) || ir > 400
                     fwrite(s, '9');
